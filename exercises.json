@@ -1,0 +1,38 @@
+{
+    "classique": [
+        {
+            "titre": "Frère Jacques",
+            "notesList": ["c", "d", "e", "c", "c", "d", "e", "c", "e", "f", "g", "e", "f", "g"],
+            "consigne": "POUR i de 1 à 2\n    JOUER 1,3,5,1\nFINPOUR i\n\nPOUR i de 1 à 2\n    JOUER 5,6,8\nFINPOUR i"
+        },
+        {
+            "titre": "Lettre à Elise",
+            "notesList": ["a", "g#", "a", "g#", "a", "e", "g", "f", "d"],
+            "algorithme": "POUR i de 1 à 2\n    SI i EST 1\n        POUR j de 1 à 2\n            JOUER a, g#\n        FINPOUR j\n    SINON SI i EST 2\n        JOUER a, e, g, f, d\n    FINSI\nFINPOUR i"
+        }
+    ],
+    "films": [
+        {
+            "titre": "Les dents de la mer",
+            "notesList": ["5", "6", "5", "6", "5", "6", "5", "6", "5", "6", "5", "6"],
+            "consigne": "POUR i de 1 à 6\n    note <- 5\n    JOUER note\n    note = note + 1\n    JOUER note\nFINPOUR i"
+        },
+        {
+            "titre": "Game of Thrones",
+            "notesList": ["g", "c", "d#", "f", "g", "c", "e", "f", "g"],
+            "consigne": "JOUER 8\nnote <- 4\nPOUR i de 1 à 2\n    SI i EST 2\n        note = note + 1\n    FINSI\n    JOUER 1, note, 6, 8\nFINPOUR i"
+        }
+    ],
+    "zelda": [
+        {
+            "titre": "Main Theme (start)",
+            "notesList": ["a", "a", "a", "a", "a", "g", "a"],
+            "consigne": "POUR i de 0 à 4\n    JOUER 10\nFINPOUR i\n\nJOUER 8, 10"
+        },
+        {
+            "titre": "Gerudo Valley",
+            "notesList": ["2", "7", "9", "10", "2", "7", "9", "10", "3", "7", "9", "10", "3", "7", "9", "10", "1", "6", "7", "9", "1", "6", "7", "9", "7", "9", "7", "6"],
+            "consigne": "POUR i de 1 à 2\n    JOUER 2, 7, 9, 10\nFINPOUR i\n\nPOUR i de 0 à 1\n    JOUER 3, 7, 9, 10\nFINPOUR i\n\nPOUR i de 50 à 51\n    JOUER 1, 6, 7, 9\nFINPOUR i\n\nJOUER 7, 9, 7, 6"
+        }
+    ]
+}
