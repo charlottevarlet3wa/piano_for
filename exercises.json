@@ -1,38 +1,53 @@
 {
-    "classique": [
+    "songs": 
+    [
         {
             "titre": "Frère Jacques",
             "notesList": ["c", "d", "e", "c", "c", "d", "e", "c", "e", "f", "g", "e", "f", "g"],
-            "consigne": "POUR i de 1 à 2\n    JOUER 1,3,5,1\nFINPOUR i\n\nPOUR i de 1 à 2\n    JOUER 5,6,8\nFINPOUR i"
+            "consigne": "POUR i de 1 à 2\n    JOUER 1,3,5,1\nFINPOUR i\n\nPOUR i de 1 à 2\n    JOUER 5,6,8\nFINPOUR i",
+            "image": "jacques.png"
         },
         {
             "titre": "Lettre à Elise",
             "notesList": ["a", "g#", "a", "g#", "a", "e", "g", "f", "d"],
-            "algorithme": "POUR i de 1 à 2\n    SI i EST 1\n        POUR j de 1 à 2\n            JOUER a, g#\n        FINPOUR j\n    SINON SI i EST 2\n        JOUER a, e, g, f, d\n    FINSI\nFINPOUR i"
-        }
-    ],
-    "films": [
+            "consigne": "POUR i de 1 à 2\n    SI i EST 1\n        POUR j de 1 à 2\n            JOUER a, g#\n        FINPOUR j\n    SINON SI i EST 2\n        JOUER a, e, g, f, d\n    FINSI\nFINPOUR i",
+            "image": "elise.png"
+        },
         {
             "titre": "Les dents de la mer",
-            "notesList": ["5", "6", "5", "6", "5", "6", "5", "6", "5", "6", "5", "6"],
-            "consigne": "POUR i de 1 à 6\n    note <- 5\n    JOUER note\n    note = note + 1\n    JOUER note\nFINPOUR i"
+            "notesList": ["e", "f", "e", "f", "e", "f", "e", "f", "e", "f", "e", "f"],
+            "consigne": "POUR i de 1 à 6\n    note <- 5\n    JOUER note\n    note = note + 1\n    JOUER note\nFINPOUR i",
+            "image": "dents.png"
         },
         {
             "titre": "Game of Thrones",
             "notesList": ["g", "c", "d#", "f", "g", "c", "e", "f", "g"],
-            "consigne": "JOUER 8\nnote <- 4\nPOUR i de 1 à 2\n    SI i EST 2\n        note = note + 1\n    FINSI\n    JOUER 1, note, 6, 8\nFINPOUR i"
-        }
-    ],
-    "zelda": [
+            "consigne": "JOUER 8\nnote <- 4\nPOUR i de 1 à 2\n    SI i EST 2\n        note = note + 1\n    FINSI\n    JOUER 1, note, 6, 8\nFINPOUR i",
+            "image": "thrones.png"
+        }, 
+        {
+            "titre": "Pirates des Caraïbes",
+            "notesList": ["c", "d#", "f", "f", "g","g#", "g#", "a#", "g", "f", "d#", "f"],
+            "consigne": "1 4 6   6 8 9   9 11 8   6 4 6",
+            "image": "pirates.png"
+        },
+        {
+            "titre": "Jurassic Park",
+            "notesList": ["f","e","f","f","e","f", "g","a#","a#","a","f","g","e","c", "a", "f","g"],
+            "consigne": "index = 0; TANT QUE index < 2 : f e f. Puis Jouer la séquence",
+            "image": "jurassic.png"
+        },
+        {
+            "titre": "La reine des neiges",
+            "notesList": ["e", "b","b","b","b","b","a","g","g", "g","g","a","a", "g","f#","e"],
+            "consigne": "JOUER e, TANT que < 5 : JOUER B. Jouer a. Jouer 2*2*g, 2*a. Puis les notes.",
+            "image": "reine.png"
+        },
         {
             "titre": "Main Theme (start)",
             "notesList": ["a", "a", "a", "a", "a", "g", "a"],
-            "consigne": "POUR i de 0 à 4\n    JOUER 10\nFINPOUR i\n\nJOUER 8, 10"
-        },
-        {
-            "titre": "Gerudo Valley",
-            "notesList": ["2", "7", "9", "10", "2", "7", "9", "10", "3", "7", "9", "10", "3", "7", "9", "10", "1", "6", "7", "9", "1", "6", "7", "9", "7", "9", "7", "6"],
-            "consigne": "POUR i de 1 à 2\n    JOUER 2, 7, 9, 10\nFINPOUR i\n\nPOUR i de 0 à 1\n    JOUER 3, 7, 9, 10\nFINPOUR i\n\nPOUR i de 50 à 51\n    JOUER 1, 6, 7, 9\nFINPOUR i\n\nJOUER 7, 9, 7, 6"
+            "consigne": "POUR i de 0 à 5\n    JOUER 10\nFINPOUR i\n\nJOUER 8, 10",
+            "image": "zelda.png"
         }
     ]
 }
