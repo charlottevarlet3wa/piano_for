@@ -39,6 +39,7 @@ function loadRandomExercise() {
 
 function loadExercise() {
     const exercise = exercises[currentExerciseIndex];
+    console.log(exercise.titre)
     notesList = exercise.notesList.map(note => ({ key: note, status: '' }));
     const consigne = exercise.consigne;
     const image = exercise.image;
@@ -49,6 +50,7 @@ function loadExercise() {
     document.getElementById('exercise-title').style.display = 'block';
     document.getElementById('sequence-display').style.display = 'block';
     document.getElementById('controls').style.display = 'none';
+    document.getElementById('message').style.display = 'none';
 
     currentNoteIndex = 0;
     updateSequenceDisplay();
@@ -85,6 +87,7 @@ function checkAnswer(key) {
         notesList[currentNoteIndex].status = 'wrong';
         currentNoteIndex++;
         if (currentNoteIndex >= notesList.length) {
+            updateSequenceDisplay();
             showCompletionMessage();
         } else {
             updateSequenceDisplay();
@@ -93,18 +96,18 @@ function checkAnswer(key) {
 }
 
 function showCompletionMessage() {
-    document.getElementById('message').innerText = `Bravo, vous avez joué ${exercises[currentExerciseIndex].titre}`;
+    document.getElementById('message').innerText = `Vous avez joué ${exercises[currentExerciseIndex].titre} !`;
     document.getElementById('message').style.display = 'block';
     document.getElementById('controls').style.display = 'block';
     if (currentExerciseIndex >= exercises.length - 1) {
         document.getElementById('controls').innerHTML = `
-            <button onclick="restartExercise()">Recommencer</button>
-            <button onclick="loadRandomExercise()">Nouvelle mélodie</button>
+            <button class="btn btn-1" onclick="restartExercise()">Recommencer</button>
+            <button class="btn btn-2" onclick="loadRandomExercise()">Nouvelle mélodie</button>
         `;
     } else {
         document.getElementById('controls').innerHTML = `
-            <button onclick="restartExercise()">Recommencer</button>
-            <button onclick="nextExercise()">Mélodie suivante</button>
+            <button class="btn btn-1" onclick="restartExercise()">Recommencer</button>
+            <button class="btn btn-2" onclick="nextExercise()">Mélodie suivante</button>
         `;
     }
 }
