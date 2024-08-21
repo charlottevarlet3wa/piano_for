@@ -33,14 +33,13 @@ fetch('exercises.json')
     });
 
 function loadRandomExercise() {
-    // currentExerciseIndex = Math.floor(Math.random() * exercises.length);
+    currentExerciseIndex = Math.floor(Math.random() * exercises.length);
     loadExercise();
-    currentExerciseIndex++;
+    // currentExerciseIndex++;
 }
 
 function loadExercise() {
     const exercise = exercises[currentExerciseIndex];
-    document.getElementById('exercise-title').textContent = exercise.titre;
     notesList = exercise.notesList.map(note => ({ key: note, status: '' }));
     const consigne = exercise.consigne;
     const image = exercise.image;
