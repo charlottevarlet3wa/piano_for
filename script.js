@@ -23,20 +23,40 @@ let exercises = {};
 let currentExerciseIndex = 0;
 let notesList = [];
 let currentNoteIndex = 0;
+let randomIndexArray = [];
+let currentRandomIndexPosition = 0;
 
 // Charger les exercices depuis le fichier JSON
 fetch('exercises.json')
     .then(response => response.json())
     .then(data => {
         exercises = data.songs;
-        loadRandomExercise();
-    });
+        generateRandomIndexArray();
+        // loadRandomExercise();
+        nextExercise();
+});
+
+// Génère un tableau d'index aléatoires
+function generateRandomIndexArray() {
+    randomIndexArray = Array.from({length: exercises.length}, (_, i) => i);
+    shuffleArray(randomIndexArray);
+}
+
+// Mélange le tableau d'index aléatoires
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
 
 function loadRandomExercise() {
-    currentExerciseIndex = Math.floor(Math.random() * exercises.length);
+    // currentExerciseIndex = Math.floor(Math.random() * exercises.length);
+    // currentRandomIndexPosition++
+    currentExerciseIndex = randomIndexArray[currentRandomIndexPosition];
     loadExercise();
-    // currentExerciseIndex++;
 }
+
 
 function loadExercise() {
     const exercise = exercises[currentExerciseIndex];
@@ -56,6 +76,7 @@ function loadExercise() {
     updateSequenceDisplay();
 }
 
+
 function updateSequenceDisplay() {
     const sequenceDisplay = document.getElementById('sequence-display');
     sequenceDisplay.innerHTML = notesList.map((note, index) => {
@@ -72,6 +93,9 @@ function updateSequenceDisplay() {
 }
 
 function checkAnswer(key) {
+    if(currentNoteIndex >= notesList.length){
+        return;
+    }
     const currentNote = notesList[currentNoteIndex];
     if (notes[key].note === currentNote.key) {
         playPianoNote(notes[key].frequency);
@@ -95,15 +119,24 @@ function checkAnswer(key) {
     }
 }
 
+function showCompletionMessageAllExercises() {
+    document.getElementById('message').innerText = "Bravo ! Vous avez réussi tous les exercices !";
+    document.getElementById('message').style.display = 'block';
+    document.getElementById('controls').style.display = 'none';
+    // document.getElementById('controls').innerHTML = `
+    //     <button class="btn btn-1" onclick="restartAllExercises()">Recommencer tous les exercices</button>
+    // `;
+}
+
 function showCompletionMessage() {
     document.getElementById('message').innerText = `Vous avez joué ${exercises[currentExerciseIndex].titre} !`;
     document.getElementById('message').style.display = 'block';
     document.getElementById('controls').style.display = 'block';
     if (currentExerciseIndex >= exercises.length - 1) {
-        document.getElementById('controls').innerHTML = `
-            <button class="btn btn-1" onclick="restartExercise()">Recommencer</button>
-            <button class="btn btn-2" onclick="loadRandomExercise()">Nouvelle mélodie</button>
-        `;
+        // document.getElementById('controls').innerHTML = `
+        //     <button class="btn btn-1" onclick="restartExercise()">Recommencer</button>
+        //     <button class="btn btn-2" onclick="loadRandomExercise()">Nouvelle mélodie</button>
+        // `;
     } else {
         document.getElementById('controls').innerHTML = `
             <button class="btn btn-1" onclick="restartExercise()">Recommencer</button>
@@ -116,9 +149,17 @@ function restartExercise() {
     loadExercise();
 }
 
+
+// Charge l'exercice suivant à partir de l'index aléatoire
 function nextExercise() {
-    currentExerciseIndex = (currentExerciseIndex + 1) % exercises.length;
+    if (currentRandomIndexPosition >= randomIndexArray.length) {
+        showCompletionMessageAllExercises();
+        return;
+    }
+
+    currentExerciseIndex = randomIndexArray[currentRandomIndexPosition];
     loadExercise();
+    currentRandomIndexPosition++;
 }
 
 function playPianoNote(frequency) {
